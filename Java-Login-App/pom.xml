@@ -17,6 +17,11 @@
 
 	<properties>
 		<java.version>11</java.version>
+
+		<sonar.host.url>http://18.175.142.44:9000</sonar.host.url>
+    	<sonar.login>admin</sonar.login>
+    	<sonar.password>@!proc234Loreon</sonar.password>
+		
 	</properties>
 
 	<dependencies>
