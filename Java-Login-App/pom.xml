@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.devopsrealtime</groupId>
-	<artifactId>dptweb</artifactId>
+	<artifactId>Java-login-app</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<name>dptweb</name>
+	<name>Java-login-app</name>
 	<description>DPT DevOps project for Spring Boot</description>
 
 	<properties>
