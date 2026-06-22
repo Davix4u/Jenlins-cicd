@@ -19,8 +19,10 @@
 		<java.version>11</java.version>
 
 		<sonar.host.url>http://18.175.142.44:9000</sonar.host.url>
-    	<sonar.login>admin</sonar.login>
-    	<sonar.password>@!proc234Loreon</sonar.password>
+    	<sonar.projectKey>Java-Login-App</sonar.projectKey>
+    	<sonar.projectName>Java-Login-App</sonar.projectName>
+    	<sonar.token>squ_a7f391f35750f304c25cafaea0f030a58509a6da</sonar.token>
+
 		
 	</properties>
 
