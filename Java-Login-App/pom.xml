@@ -83,12 +83,18 @@
 			</plugin>
 		</plugins>
 	</build>
-<distributionManagement>
+
+	<distributionManagement>
     <repository>
-        <id>central</id>
-        <name>a0nymgefaiwwu-artifactory-primary-0-releases</name>
-        <url>https://edshopdpt8.jfrog.io/artifactory/libs-release-local</url>
+        <id>nexus</id>
+        <name>Loreon learning Releases Nexus Repo</name>
+        <url>http://35.179.102.201:8081/repository/loreon-fe-releases/</url>
     </repository>
+    <snapshotRepository>
+        <id>nexus</id>
+        <name>Loreon learning Releases Snapshots Repo</name>
+        <url>http://35.179.102.201:8081/repository/loreon-snapshots/</url>
+    </snapshotRepository>
 </distributionManagement> 
 
 </project>
