@@ -116,35 +116,50 @@ tiers.
   cat /opt/sonarqube/logs/es.log
   sudo su - sonar -s /bin/bash -c "/opt/sonarqube/bin/linux-x86-64/sonar.sh stop"
 
-
 ```
 
-### 6. Kubectl
-- **kubectl install**
+<img width="854" height="454" alt="sonarquebctl" src="https://github.com/user-attachments/assets/2f837d62-97da-4bcb-b0d4-e27d6ac357c6" />
+
+<img width="857" height="430" alt="sonarqube installation" src="https://github.com/user-attachments/assets/146b8273-7d2c-4109-847d-b2412a281f62" />
+
+
+
+### 5. install java
+- **JAVA**
 ```bash
   # for linux
-  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
-  echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
-
-  # Install kubectl
-  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-  kubectl version --client
+  sudo apt install -y unzip wget git
+  sudo apt update
+  sudo apt install -y openjdk-17-jdk
+  
 ```
 
-### 7. Helms chart
-- **Hemsc chart**
+### 7. JENKINGS
+- **JENKINS**
 ```bash
-  HELM_BUILDKITE_APT_KEY_ID="DDF78C3E6EBB2D2CC223C95C62BA89D07698DBC6"
-  sudo apt-get install curl gpg apt-transport-https --yes
-  curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey > "${TMPDIR:-/tmp}/helm.gpg"
-  # Ensure that the key ID matches to prevent a repository compromise from establishing an attacker controlled key
-  if [ "$(gpg --show-keys --with-colons "${TMPDIR:-/tmp}/helm.gpg" | awk -F: '$1 == "fpr" {print $10}' | head -n 1)" !=                 "${HELM_BUILDKITE_APT_KEY_ID}" ]; then echo "ERROR: Unexpected Helm APT key ID: potential key compromise"; exit 1; fi
-  cat "${TMPDIR:-/tmp}/helm.gpg" | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-  echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" |    sudo     tee /etc/apt/sources.list.d/helm-stable-debian.list
-  sudo apt-get update
-  sudo apt-get install helm
+  # for linus
+  sudo apt update
+  sudo apt install fontconfig openjdk-21-jre
+  java -version
+
+  sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+  echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+  sudo apt update
+  sudo apt install jenkins
+
+  sudo systemctl enable jenkins
+  sudo systemctl enable jenkins
+  sudo systemctl status jenkins
 ```
+
+<img width="870" height="431" alt="jenkinssysctl" src="https://github.com/user-attachments/assets/d503b16d-c00e-407e-b40a-8b77d0a25149" />
+
+<img width="847" height="410" alt="jenkins-installed" src="https://github.com/user-attachments/assets/e541bc69-4c70-4450-80f6-920d01cc2d1d" />
+
+
 
 ### 8. Terraform
 - **Terraform**
@@ -183,3 +198,62 @@ tiers.
   terraform plan
   terraform apply
 ```
+
+### 3. NEXUS
+- **Nexus for storage**
+  - S
+  - Generate authentication token
+  - install java:
+```bash
+  # for linux
+  sudo apt update
+  sudo apt install -y openjdk-8-java -version
+
+  cd /opt
+  sudo wget https://download.sonatype.com/nexus/3/nexus-3.70.1-02-java8-unix.tar.gz
+  sudo tar -zxvf nexus-3.70.1-02-java8-unix.tar.gz
+  sudo mv nexus-3.70.1-02 nexus
+
+  # Create the nexus user and set ownership:
+  sudo useradd -r -m -U -d /opt/nexus -s /bin/bash nexus
+  sudo chown -R nexus:nexus /opt/nexus
+  sudo chown -R nexus:nexus /opt/sonatype-work
+
+  set nexus runner to run as nexus
+  sudo nano /opt/nexus/bin/nexus.rc
+  run_as_user="nexus"
+
+  # create the sysmtd services file
+  sudo nano /etc/systemd/system/nexus.service
+
+  paste this
+  [Unit]
+Description=Nexus Repository Manager
+After=network.target
+
+[Service]
+Type=forking
+LimitNOFILE=65536
+ExecStart=/opt/nexus/bin/nexus start
+ExecStop=/opt/nexus/bin/nexus stop
+User=nexus
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
+  # start the systmctl
+  sudo systemctl daemon-reload
+  sudo systemctl enable nexus
+  sudo systemctl start nexus
+  sudo systemctl status nexus
+```
+
+<img width="934" height="416" alt="image" src="https://github.com/user-attachments/assets/561c1053-0c37-4927-bf42-fa19ff88d079" />
+
+<img width="934" height="416" alt="nexus-status" src="https://github.com/user-attachments/assets/5d09f04a-7bcc-4336-8917-9ae4cb13b26c" />
+
+
+
+
+
