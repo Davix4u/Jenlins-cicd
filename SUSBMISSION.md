@@ -401,6 +401,30 @@ admin:repo_hook
 - Select Freestyle project
 - Click OK
 
+- <img width="932" height="422" alt="image" src="https://github.com/user-attachments/assets/aa56b18c-cc1f-42e0-bc84-0d91149ab71a" />
+
+- <img width="957" height="428" alt="jenkins-github" src="https://github.com/user-attachments/assets/8718cc87-94c6-47a9-ab0c-f016d08705df" />
+
+- <img width="949" height="376" alt="jenkins-github-trigger" src="https://github.com/user-attachments/assets/92f6e280-0600-4143-8278-8ed7600acf0f" />
+
+- <img width="959" height="427" alt="github-maven" src="https://github.com/user-attachments/assets/974bf2fb-5f91-4199-9cd6-eb81a905cbfd" />
+
+- <img width="932" height="422" alt="jenkins post job" src="https://github.com/user-attachments/assets/44b78b6b-540b-4b06-9e57-e476bd980894" />
+- <img width="932" height="422" alt="Screenshot 2026-07-03 093121" src="https://github.com/user-attachments/assets/e596173d-6b1a-44df-8231-d167089d8ff1" />
+
+## Click Settings → Webhooks → Add webhook
+Payload URL: http://54.77.44.206:8080/github-webhook/
+Content type: application/json
+Which events: Just the push event
+Check Active
+Click Add webhook
+
+
+
+
+
+
+
   
 
 
