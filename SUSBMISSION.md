@@ -430,6 +430,32 @@ http://3.250.69.170:8080/Java-login-app-1.0
 - <img width="943" height="434" alt="jenkins-deploymentsucessful" src="https://github.com/user-attachments/assets/5ebe0e49-63ae-4406-a360-76b0187675a4" />
 - <img width="917" height="455" alt="Screenshot 2026-07-03 112526" src="https://github.com/user-attachments/assets/dcb36098-795d-408b-9d06-b0ba4b63f7d6" />
 
+http://34.245.151.213:9000
+Is the SonarQube dashboard accessible? Login with admin / admin if prompted
+
+## In SonarQube dashboard:
+
+- Click your profile icon (top right) → My Account
+- Click Security tab
+- Under Generate Tokens, enter name: jenkins-token
+- Click Generate
+- Copy the token immediately — you won't see it again
+
+### Go to Manage Jenkins → Credentials → System → Global credentials → Add Credentials
+- Kind: Secret text
+- Secret: paste your SonarQube token
+- ID: sonarqube-token
+- Description: SonarQube Token
+- Click Create
+
+- <img width="958" height="469" alt="sonaqueb login-page" src="https://github.com/user-attachments/assets/5579810c-3e8d-499d-9aa0-1550d6488522" />
+
+<img width="959" height="407" alt="sonaqueb-token" src="https://github.com/user-attachments/assets/1003ca5d-2a45-4b51-bf46-1c41219007db" />
+
+
+
+
+
 
 
 
