@@ -452,6 +452,43 @@ Is the SonarQube dashboard accessible? Login with admin / admin if prompted
 
 <img width="959" height="407" alt="sonaqueb-token" src="https://github.com/user-attachments/assets/1003ca5d-2a45-4b51-bf46-1c41219007db" />
 
+### Go to Manage Jenkins → System and scroll down to SonarQube servers section:
+- Check Environment variables checkbox
+- Click Add SonarQube
+- Name: SonarQube
+- Server URL: http://34.245.151.213:9000
+- Server authentication token: select sonarqube-token
+
+### Go to Manage Jenkins → Tools and scroll down to SonarQube Scanner section:
+- Click Add SonarQube Scanner
+- Name: SonarScanner
+- Check Install automatically
+- Select the latest version
+
+### Go to Java-App job → Configure → Build Steps
+- Click Add build step
+- Select Execute SonarQube Scanner
+- Analysis properties:
+
+Now add the SonarQube analysis step to the Jenkins job:
+
+Go to Java-App job → Configure → Build Steps
+
+Click Add build step
+Select Execute SonarQube Scanner
+Analysis properties:
+sonar.projectKey=Java-Login-App
+sonar.projectName=Java-Login-App
+sonar.projectVersion=1.0
+sonar.sources=Java-Login-App/src/main/java
+sonar.java.binaries=Java-Login-App/target/classes
+Make sure this step is after the Maven clean package step.
+
+<img width="946" height="428" alt="Screenshot 2026-07-03 121811" src="https://github.com/user-attachments/assets/92287b36-c92b-4044-94bb-6378512dd090" />
+
+- <img width="947" height="434" alt="SAST-SUCESSFUL" src="https://github.com/user-attachments/assets/11f612af-7f7d-418b-a9af-1b37207c7c71" />
+
+
 
 
 
