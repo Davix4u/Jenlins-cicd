@@ -253,6 +253,94 @@ WantedBy=multi-user.target
 
 <img width="934" height="416" alt="nexus-status" src="https://github.com/user-attachments/assets/5d09f04a-7bcc-4336-8917-9ae4cb13b26c" />
 
+### 3. Tomcat
+- **Tomcat for web proxzy**
+  - S
+  - Generate authentication token
+  - install java:
+```bash
+  sudo hostnamectl set-hostname app-server
+  exec bash
+
+  sudo apt update
+  sudo apt install -y openjdk-11-jdk
+  java -version
+
+. Install Tomcat 9:
+  cd /opt
+  sudo wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65.tar.gz
+  sudo tar -zxvf apache-tomcat-9.0.65.tar.gz
+  sudo mv apache-tomcat-9.0.65 tomcat
+
+  Create tomcat user and set ownership
+  sudo useradd -r -m -U -d /opt/tomcat -s /bin/bash tomcat
+  sudo chown -R tomcat:tomcat /opt/tomcat
+
+  Enable the Manager app — edit tomcat-users.xml:
+  sudo nano /opt/tomcat/conf/tomcat-users.xml
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <user username="admin" password="admin123" roles="manager-gui,manager-script"/>
+
+  Allow remote access to Manager app:
+  bashsudo nano /opt/tomcat/webapps/manager/META-INF/context.xml
+
+  Comment out the Valve line:
+  xml<!-- <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
+  Create systemd service:
+  bashsudo nano /etc/systemd/system/tomcat.service
+  Paste this:
+  ini[Unit]
+  Description=Tomcat 9
+  After=network.target
+
+  [Service]
+  Type=forking
+  User=tomcat
+  Group=tomcat
+  Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64"
+  Environment="CATALINA_HOME=/opt/tomcat"
+  ExecStart=/opt/tomcat/bin/startup.sh
+  ExecStop=/opt/tomcat/bin/shutdown.sh
+  Restart=on-abort
+
+  [Install]
+  WantedBy=multi-user.target
+  Enable and start Tomcat:
+  bashsudo systemctl daemon-reload
+  sudo systemctl enable tomcat
+  sudo systemctl start tomcat
+  sudo systemctl status tomcat
+
+  Install Nginx:
+  sudo apt install -y nginx
+  Configure Nginx reverse proxy:
+  sudo nano /etc/nginx/sites-available/default
+
+  Replace the contents with:
+  nginxserver {
+      listen 80;
+      server_name _;
+
+      location / {
+          proxy_pass http://localhost:8080;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+        }
+  }
+  Start Nginx:
+  sudo systemctl enable nginx
+  sudo systemctl start nginx
+  sudo systemctl status nginx
+
+```
+
+<img width="874" height="461" alt="tomcat-installed" src="https://github.com/user-attachments/assets/e007cd42-87ff-4e77-88ac-f586d2db23cd" />
+
+<img width="886" height="451" alt="image" src="https://github.com/user-attachments/assets/435a3239-3a7e-4be1-8530-85acae1884f2" />
+
+
 
 
 
