@@ -413,11 +413,29 @@ admin:repo_hook
 - <img width="932" height="422" alt="Screenshot 2026-07-03 093121" src="https://github.com/user-attachments/assets/e596173d-6b1a-44df-8231-d167089d8ff1" />
 
 ## Click Settings → Webhooks → Add webhook
-Payload URL: http://54.77.44.206:8080/github-webhook/
-Content type: application/json
-Which events: Just the push event
-Check Active
-Click Add webhook
+- Payload URL: http://54.77.44.206:8080/github-webhook/
+- Content type: application/json
+- Which events: Just the push event
+- Check Active
+- Click Add webhook
+
+- <img width="952" height="438" alt="webhook-config" src="https://github.com/user-attachments/assets/ea91c7c0-a4a7-44ce-acc7-00fadb298d8e" />
+
+- <img width="905" height="434" alt="webhoo-added" src="https://github.com/user-attachments/assets/94ee410c-ed5d-4dfd-859b-1e0d5ef43756" />
+- <img width="955" height="482" alt="tomcat-password" src="https://github.com/user-attachments/assets/ee4d48b4-c38b-4a97-94d9-06ec07023461" />
+- <img width="938" height="476" alt="tom-cat=working" src="https://github.com/user-attachments/assets/b5d2e5ad-6759-45f6-a81e-7f22bcdf0e10" />
+
+http://3.250.69.170:8080/Java-login-app-1.0
+
+- <img width="943" height="434" alt="jenkins-deploymentsucessful" src="https://github.com/user-attachments/assets/5ebe0e49-63ae-4406-a360-76b0187675a4" />
+- <img width="917" height="455" alt="Screenshot 2026-07-03 112526" src="https://github.com/user-attachments/assets/dcb36098-795d-408b-9d06-b0ba4b63f7d6" />
+
+
+
+
+
+
+
 
 
 
