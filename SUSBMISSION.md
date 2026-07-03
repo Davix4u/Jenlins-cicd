@@ -1,11 +1,11 @@
-# SRE — Deploy a Python Application on AWS 1-Tier Architecture
+# Jenkins — Deploy a Java Application on AWS 1-Tier Architecture
 
 
 # Project Overview
 
 ## Introduction
 
-This project demonstrates the deployment of a production-grade python web application using AWS's architecture. 
+This project demonstrates the deployment of a production-grade java web application using AWS's architecture. 
 The implementation follows cloud-native best practices, ensuring high availability, scalability, and security across all application 
 tiers.
 
@@ -20,18 +20,7 @@ tiers.
 1. **Presentation Tier (Frontend)**
   - Nginx web servers in Auto Scaling Group
   - Public-facing Network Load Balancer
-  
 
-2. **Application Tier (Backend)**
-  - Apache Tomcat servers in Auto Scaling Group
-  - Internal Network Load Balancer
-  - Session management with Amazon ElastiCache
-
-3. **Data Tier**
-  - Amazon DynamoDB
-  - Amazon S3 bucket
-  - Automated backups and point-in-time recovery
-  - 
 
 ### Network Architectur
 
@@ -79,8 +68,8 @@ tiers.
   - Configure project settings:
 ```bash
 
-### 5. Sonarqueb
-- **sonarqueb** for SAST DAST IAT
+### 4. Sonarqueb
+- **sonarqueb for SAST DAST IAT**
 ```bash
   # for linux
   sudo apt install -y unzip wget git
@@ -134,7 +123,7 @@ tiers.
   
 ```
 
-### 7. JENKINGS
+### 6. JENKINGS
 - **JENKINS**
 ```bash
   # for linus
@@ -161,7 +150,7 @@ tiers.
 
 
 
-### 8. Terraform
+### 7. Terraform
 - **Terraform**
 ```bash
   # for linux
@@ -199,7 +188,7 @@ tiers.
   terraform apply
 ```
 
-### 3. NEXUS
+### 9. NEXUS
 - **Nexus for storage**
   - S
   - Generate authentication token
@@ -253,7 +242,7 @@ WantedBy=multi-user.target
 
 <img width="934" height="416" alt="nexus-status" src="https://github.com/user-attachments/assets/5d09f04a-7bcc-4336-8917-9ae4cb13b26c" />
 
-### 3. Tomcat
+### 10. Tomcat
 - **Tomcat for web proxzy**
   - S
   - Generate authentication token
@@ -393,7 +382,7 @@ WantedBy=multi-user.target
 - Description: GitHub PAT
 - Click Create
 
-# To generate a PAT on GitHub:
+## To generate a PAT on GitHub:
 
 - Go to github.com → click your profile → Settings
 - Scroll down to Developer settings
@@ -405,6 +394,14 @@ repo
 admin:repo_hook
 
 <img width="898" height="242" alt="Screenshot 2026-07-03 082235" src="https://github.com/user-attachments/assets/48611ebf-6101-4a9f-9b7c-6029f84b5a09" />
+
+## Go to Jenkins dashboard → New Item (or Create Job)
+
+- Name: Java-Login-App
+- Select Freestyle project
+- Click OK
+
+  
 
 
 
