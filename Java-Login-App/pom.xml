@@ -86,16 +86,11 @@
 	</build>
 
 	<distributionManagement>
-    <repository>
-        <id>nexus</id>
-        <name>Loreon learning Releases Nexus Repo</name>
-        <url>http://35.179.102.201:8081/repository/loreon-fe-releases/</url>
-    </repository>
-    <snapshotRepository>
-        <id>nexus</id>
-        <name>Loreon learning Releases Snapshots Repo</name>
-        <url>http://35.179.102.201:8081/repository/loreon-snapshots/</url>
-    </snapshotRepository>
-</distributionManagement> 
+    	<repository>
+        	<id>nexus-releases</id>
+       	 	<name>Nexus Releases</name>
+        	<url>http://18.201.11.171:8081/repository/maven-releases/</url>
+   		 </repository>
+	</distributionManagement> 
 
 </project>
