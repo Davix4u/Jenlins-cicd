@@ -341,6 +341,83 @@ WantedBy=multi-user.target
 <img width="886" height="451" alt="image" src="https://github.com/user-attachments/assets/435a3239-3a7e-4be1-8530-85acae1884f2" />
 
 
+# Jenkins configurations step
+- sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+- Paste that password into the Jenkins UI, then:
+- Click Install suggested plugins and wait
+- Create your admin user
+- Click Save and Finish
+
+  <img width="959" height="453" alt="create a jenkins plugins" src="https://github.com/user-attachments/assets/8fa3ea26-a22e-49c6-b2a6-e640eb1debe3" />
+
+  <img width="959" height="430" alt="jenkins-plugins-installed" src="https://github.com/user-attachments/assets/a18c288c-6824-4db7-aaf8-c073fa58a2de" />
+
+
+
+## step 2
+- Manage Jenkins → Plugins → Available plugins
+- Search and install each of these:
+- Maven Integration
+- SonarQube Scanner
+- Nexus Artifact Uploader
+- Deploy to container
+- GitHub Integration
+- Slack Notification (bonus)
+- Email Extension (bonus
+
+<img width="950" height="439" alt="jenkins-dashboard" src="https://github.com/user-attachments/assets/5209922b-b694-4357-b728-d7d3d753cdec" />
+
+<img width="953" height="463" alt="plugins-installed" src="https://github.com/user-attachments/assets/921c1bff-79b8-4325-8d20-9eb600bae49d" />
+
+
+### steps 3
+-  Go to Manage Jenkins → Tools
+- JDK section:
+
+- Click Add JDK
+- Name: JDK11
+- Uncheck Install automatically
+- JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+
+- Click Add Maven
+- Name: Maven3
+- Check Install automatically
+- Select version 3.9.6
+
+# Go to Manage Jenkins → Credentials → System → Global credentials (unrestricted) → Add Credentials
+
+- Kind: Username with password
+- Username: Davix4u
+- Password: paste your GitHub Personal Access Token (PAT)
+- ID: github-credentials
+- Description: GitHub PAT
+- Click Create
+
+# To generate a PAT on GitHub:
+
+- Go to github.com → click your profile → Settings
+- Scroll down to Developer settings
+- Personal access tokens → Tokens (classic)
+- Click Generate new token (classic)
+- Give it a name, set expiration, and check these scopes:
+
+repo
+admin:repo_hook
+
+<img width="898" height="242" alt="Screenshot 2026-07-03 082235" src="https://github.com/user-attachments/assets/48611ebf-6101-4a9f-9b7c-6029f84b5a09" />
+
+
+
+
+
+
+
+
+  
+
+
+
+
 
 
 
