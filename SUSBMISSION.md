@@ -488,6 +488,66 @@ Make sure this step is after the Maven clean package step.
 
 - <img width="947" height="434" alt="SAST-SUCESSFUL" src="https://github.com/user-attachments/assets/11f612af-7f7d-418b-a9af-1b37207c7c71" />
 
+# Nexus integration 
+- sudo systemctl restart nexus
+- sudo cat /opt/sonatype-work/nexus3/admin.password
+
+### Good. Now create a Maven hosted repository for storing the WAR artifacts:
+- Click Settings (gear icon) → Repositories → Create repository
+- Select maven2 (hosted)
+- Name: maven-releases
+- Version policy: Release
+- Deployment policy: Allow redeploy
+- Click Create repository
+
+### Now add Nexus credentials to Jenkins:
+Go to Manage Jenkins → Credentials → System → Global credentials → Add Credentials
+- Kind: Username with password
+- Username: admin
+- Pas-sword: 327c5634-d4fe-4a55-a0b5-5979e382bd7d
+- ID: nexus-credentials
+- Description: Nexus Credentials
+- Click Creat
+
+### Now we need to update the pom.xml in your repo to add the Nexus distributionManagement section so Maven knows where to publish the WAR.
+- Go to your GitHub repo → Java-Login-App/pom.xml and add this inside the
+-  <project> tag:
+xml<distributionManagement>
+    <repository>
+        <id>nexus-releases</id>
+        <url>http://18.201.11.171:8081/repository/maven-releases/</url>
+    </repository>
+
+    Edit it directly on GitHub:
+
+### Go to Java-Login-App/pom.xml
+Click the pencil icon to edit
+Find and replace the distributionManagement section
+Commit the changes
+</distributionManagement>
+
+
+- sudo mkdir -p /var/lib/jenkins/.m2
+- sudo tee /var/lib/jenkins/.m2/settings.xml << 'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <servers>
+    <server>
+      <id>nexus-releases</id>
+      <username>admin</username>
+      <password>Boluwatife</password>
+    </server>
+  </servers>
+</settings>
+EOF
+ sudo chown -R jenkins:jenkins /var/lib/jenkins/.m2
+ sudo ls -la /var/lib/jenkins/.m2/
+ sudo cat /var/lib/jenkins/.m2/settings.xml
+
+
+<img width="959" height="439" alt="Nexus-build-sucessful" src="https://github.com/user-attachments/assets/5cc2ae0a-23f3-4efd-9717-bbec31380ab1" />
+
+<img width="938" height="407" alt="nexus-sonarquwb sucessful" src="https://github.com/user-attachments/assets/b95c81db-e353-436a-920a-91d15b4d0d7c" />
 
 
 
