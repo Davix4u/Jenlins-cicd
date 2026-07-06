@@ -412,7 +412,8 @@ admin:repo_hook
 - <img width="932" height="422" alt="jenkins post job" src="https://github.com/user-attachments/assets/44b78b6b-540b-4b06-9e57-e476bd980894" />
 - <img width="932" height="422" alt="Screenshot 2026-07-03 093121" src="https://github.com/user-attachments/assets/e596173d-6b1a-44df-8231-d167089d8ff1" />
 
-## Click Settings → Webhooks → Add webhook
+## webhook activation
+ Click Settings → Webhooks → Add webhook
 - Payload URL: http://54.77.44.206:8080/github-webhook/
 - Content type: application/json
 - Which events: Just the push event
@@ -430,6 +431,7 @@ http://3.250.69.170:8080/Java-login-app-1.0
 - <img width="943" height="434" alt="jenkins-deploymentsucessful" src="https://github.com/user-attachments/assets/5ebe0e49-63ae-4406-a360-76b0187675a4" />
 - <img width="917" height="455" alt="Screenshot 2026-07-03 112526" src="https://github.com/user-attachments/assets/dcb36098-795d-408b-9d06-b0ba4b63f7d6" />
 
+## Sonaqueb Integration
 http://34.245.151.213:9000
 Is the SonarQube dashboard accessible? Login with admin / admin if prompted
 
@@ -550,6 +552,15 @@ EOF
 <img width="938" height="407" alt="nexus-sonarquwb sucessful" src="https://github.com/user-attachments/assets/b95c81db-e353-436a-920a-91d15b4d0d7c" />
 
 <img width="958" height="437" alt="image" src="https://github.com/user-attachments/assets/fe20b36e-f815-4ab5-9fb9-e6433539a252" />
+
+## The webhook is configured correctly. Now let's verify it actually triggers Jenkins automatically.
+Make a small change to your repo on GitHub:
+
+Go to https://github.com/Davix4u/Jenlins-cicd
+Click on README.md
+Click the pencil icon to edit
+Add a line like # Test webhook trigger
+Click Commit changes
 
 # Test webhook trigger
 
