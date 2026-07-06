@@ -549,6 +549,11 @@ EOF
 
 <img width="938" height="407" alt="nexus-sonarquwb sucessful" src="https://github.com/user-attachments/assets/b95c81db-e353-436a-920a-91d15b4d0d7c" />
 
+<img width="958" height="437" alt="image" src="https://github.com/user-attachments/assets/fe20b36e-f815-4ab5-9fb9-e6433539a252" />
+
+# Test webhook trigger
+
+
 
 
 
