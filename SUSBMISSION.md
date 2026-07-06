@@ -9,6 +9,11 @@ This project demonstrates the deployment of a production-grade java web applicat
 The implementation follows cloud-native best practices, ensuring high availability, scalability, and security across all application 
 tiers.
 
+## Artitecture of the project
+
+<img width="709" height="394" alt="Screenshot 2026-07-06 022539" src="https://github.com/user-attachments/assets/084ac2ff-f190-464d-9960-abd89aea988e" />
+
+
 ### Key Features
 
 - **High Availability**: Multi-AZ deployment with automated failover
